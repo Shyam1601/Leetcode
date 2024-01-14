@@ -1,0 +1,61 @@
+/*228. Summary Ranges
+Solved
+Easy
+Topics
+Companies
+You are given a sorted unique integer array nums.
+
+A range [a,b] is the set of all integers from a to b (inclusive).
+
+Return the smallest sorted list of ranges that cover all the numbers in the array exactly. That is, each element of nums is covered by exactly one of the ranges, and there is no integer x such that x is in one of the ranges but not in nums.
+
+Each range [a,b] in the list should be output as:
+
+"a->b" if a != b
+"a" if a == b
+ 
+
+Example 1:
+
+Input: nums = [0,1,2,4,5,7]
+Output: ["0->2","4->5","7"]
+Explanation: The ranges are:
+[0,2] --> "0->2"
+[4,5] --> "4->5"
+[7,7] --> "7"
+Example 2:
+
+Input: nums = [0,2,3,4,6,8,9]
+Output: ["0","2->4","6","8->9"]
+Explanation: The ranges are:
+[0,0] --> "0"
+[2,4] --> "2->4"
+[6,6] --> "6"
+[8,9] --> "8->9"
+*/
+
+//ALGOITHM:---
+/*
+
+1.Traverse the entire array
+2.keep start at every element and check whether i doesnt reached end and the ith element added with 1 gives the next element. If so then keep travelling ahead by incrementing i until you find a breakpoint
+3. Once you find a breakpoint where nums[i]+1!=nums[i+1],so at that time check whether nums[i]!=start,if so add it to list start+"->"+nums[i]
+4. else add just the start 
+*/
+
+//CODE:--
+class Solution {
+    public List<String> summaryRanges(int[] nums) {
+
+        List<String> l=new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            int s=nums[i];
+            while(  i+1<nums.length && nums[i]==nums[i+1]-1)
+               i++;
+            if(nums[i]!=s){l.add(""+s+"->"+nums[i]);}
+            else l.add(""+s);
+            
+        }
+        return l;
+    }
+}
