@@ -50,7 +50,7 @@ class Solution {
         for(int i=1;i<candies.length;i++){                  //loop for finding the maximum element in the array
             if(candies[i]>max) max=candies[i];
         }
-        List<Boolean> l=new ArrayList<>();
+        List<Boolean> l=new ArrayList<>(candies.length);
         for(int i:candies){                                   //looping each element and compared with the maximum element and add the boolean value into the list
             if(i+extraCandies >=max) l.add(true);
             else l.add(false);
