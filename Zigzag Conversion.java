@@ -44,7 +44,7 @@ s consists of English letters (lower-case and upper-case), ',' and '.'.
 
 class Solution {
     public String convert(String s, int numRows) {
-      if(s.length()==1) return s;
+      if(numRows==1) return s;
       int n=s.length();
       int k=2*(numRows-1);
       StringBuilder str=new StringBuilder();
